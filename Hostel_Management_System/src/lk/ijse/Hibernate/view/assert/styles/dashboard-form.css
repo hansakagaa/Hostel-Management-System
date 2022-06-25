@@ -1,0 +1,87 @@
+*{
+    -fx-font-family: Ubuntu;
+}
+
+#lbl{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+}
+
+#cmb{
+    -fx-border-radius: 50;
+    -fx-background-color: inherit;
+    -fx-border-color: black;
+    -fx-background-radius: 50;
+    -fx-alignment: center;
+}
+
+#btnReservation{
+    -fx-background-color: #00ff55;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#btnCancel{
+    -fx-background-color: orange;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#btnRoom{
+    -fx-background-color: darkorange;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#btnAddNew{
+    -fx-background-color: #05eaff;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#btnStudent{
+    -fx-background-color: orangered;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#btnReserve{
+    -fx-background-color: #4cd137;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+#pane{
+    -fx-background-color: white;
+}
+
+#std{
+    -fx-font-size: 15;
+}
+
+#txt{
+    -jfx-unfocus-color: white;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color: inherit;
+    -fx-border-color: black;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, #eeeeee, 1, 1, 0, 0);
+}

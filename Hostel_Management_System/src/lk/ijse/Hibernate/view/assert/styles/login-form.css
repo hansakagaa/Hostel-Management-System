@@ -1,0 +1,36 @@
+*{
+    -fx-font-family: Ubuntu;
+}
+
+#lbl{
+    -fx-font-size: 22;
+    -fx-effect: dropshadow(gaussian, #eeeeee, 1, 1, 0, 0);
+}
+
+#txt{
+    -fx-background-radius: 50;
+    -fx-border-color: white;
+    -fx-border-radius: 50;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, #eeeeee, 1, 1, 0, 0);
+}
+
+#btn{
+    -fx-background-insets: 50;
+    -fx-text-fill: aqua;
+    -fx-effect: dropshadow(gaussian, #eeeeee, 1, 1, 0, 0);
+}
+
+#sep{
+    -fx-background-color: #210dff;
+}
+
+#line{
+    -fx-stroke: white;
+}
+
+#pane{
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 50;
+    -fx-border-style: solid;
+}
