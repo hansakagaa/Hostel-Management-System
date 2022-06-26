@@ -43,7 +43,7 @@
 }
 
 #btnAddNew{
-    -fx-background-color: #05eaff;
+    -fx-background-color: #00cec9;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
     -fx-border-color: black;
@@ -68,7 +68,7 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
-#pane{
+#root{
     -fx-background-color: white;
 }
 

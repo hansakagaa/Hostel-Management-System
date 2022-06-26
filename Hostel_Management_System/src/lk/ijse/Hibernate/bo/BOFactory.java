@@ -1,5 +1,7 @@
 package lk.ijse.Hibernate.bo;
 
+import lk.ijse.Hibernate.bo.custom.impl.*;
+
 /**
     @author : Hasii-boy
 **/
@@ -11,12 +13,18 @@ public class BOFactory { private static BOFactory boFactory;
         return (null == boFactory) ? boFactory = new BOFactory() : boFactory;
     }
 
-    public <T extends SuperBO> T getBO(BOType boType){
+    public <BO extends SuperBO> BO getBO(BOType boType){
         switch (boType){
-//            case CUSTOMER:
-//                return (T) new CustomerBOImpl();
-//            case ITEM:
-//                return (T) new CustomerBOImpl();
+            case STUDENT:
+                return (BO) new StudentBOImpl();
+            case ROOM:
+                return (BO) new RoomBOImpl();
+            case RESERVATION:
+                return (BO) new ReservationBoImpl();
+            case DASHBOARD:
+                return (BO) new DashboardBOImpl();
+            case USER:
+                return (BO) new User_passwordBOImpl();
             default:
                 return null;
         }

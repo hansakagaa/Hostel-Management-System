@@ -2,12 +2,13 @@ package lk.ijse.Hibernate.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.animation.ScaleTransition;
-import javafx.application.Platform;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -17,83 +18,219 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.Hibernate.bo.BOFactory;
+import lk.ijse.Hibernate.bo.BOType;
+import lk.ijse.Hibernate.bo.custom.DashboardBO;
+import lk.ijse.Hibernate.dto.ReservationDTO;
+import lk.ijse.Hibernate.dto.RoomDTO;
+import lk.ijse.Hibernate.dto.StudentDTO;
 
 import java.io.IOException;
-import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  * @author : Hasii-boy
  **/
 public class DashboardFormController {
+    private final DashboardBO dashboardBO = (DashboardBO) BOFactory.getInstance().getBO(BOType.DASHBOARD);
     @FXML
-    public AnchorPane root;
+    private AnchorPane root;
     @FXML
-    public ComboBox<String> cmdStudent;
+    private ComboBox<String> cmdStudent;
     @FXML
-    public Label lblStudent;
+    private Label lblStudent;
     @FXML
-    public JFXTextField txtRes_id;
+    private JFXTextField txtRes_id;
     @FXML
-    public ComboBox<String> cmdRoom_type;
+    private ComboBox<String> cmdRoom_type;
     @FXML
-    public Label lblReservation;
+    private Label lblReservation;
     @FXML
-    public JFXTextField txtStatus;
+    private JFXTextField txtStatus;
     @FXML
-    public Label lblDate_Time;
+    private Label lblDate_Time;
     @FXML
-    public JFXButton btnReservation;
+    private JFXButton btnReservation;
     @FXML
-    public Label lbl01;
+    private Label lbl01;
     @FXML
-    public Label lbl02;
-    @FXML
-    public JFXButton btnRoom;
-    @FXML
-    public JFXButton btnStudent;
-    @FXML
-    public JFXButton btnReserve;
+    private Label lbl02;
 
 
-    @FXML
-    public void addNewStudentOnAction(ActionEvent actionEvent) {
+    public void initialize(){
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(2000), root);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
 
+        enableOrDisableReservationButton();
+
+        cmdStudent.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, student) -> {
+            enableOrDisableReservationButton();
+
+            if (student != null) {
+                try {
+                    boolean exits = dashboardBO.exitsStudent(student + "");
+
+                    if (!exits) {
+                        new Alert(Alert.AlertType.ERROR, "There is no such Student associated with the id " + student + "").show();
+                    }
+
+                    StudentDTO dto = dashboardBO.findStudent(student + "");
+                    lblStudent.setText(dto.getName()+" | "+dto.getAddress()+" | "+dto.getContact()+" | "+dto.getDateOfBirth()+" | "+dto.getGender());
+
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            } else {
+                lblStudent.setText("");
+            }
+        });
+
+        cmdRoom_type.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, room) -> {
+            enableOrDisableReservationButton();
+
+            if (room != null) {
+                try {
+                    boolean exits = dashboardBO.exitsRoom(room + "");
+
+                    if (!exits) {
+                        new Alert(Alert.AlertType.ERROR, "There is no such Room associated with the id " + room + "").show();
+                    }
+
+                    RoomDTO dto = dashboardBO.findRoom(room + "");
+                    lblReservation.setText(dto.getType()+" | "+dto.getKeyMoney()+" | "+dto.getRoomQty());
+
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            } else {
+                lblReservation.setText("");
+            }
+        });
+
+        loadAllStudentId();
+        loadAllRoomType();
+        lordDateAndTime();
+    }
+
+    private void enableOrDisableReservationButton() {
+        btnReservation.setDisable(cmdStudent.getSelectionModel().getSelectedItem() == null && cmdRoom_type.getSelectionModel().getSelectedItem() == null && txtRes_id.getText() == null);
+    }
+
+    private void loadAllStudentId() {
+        try {
+            ArrayList<StudentDTO> dtoS = dashboardBO.getAllStudent();
+            for (StudentDTO dto : dtoS) {
+                cmdStudent.getItems().add(dto.getSId());
+            }
+
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to load student ids").show();
+        }
+    }
+
+    private void loadAllRoomType() {
+        try {
+            ArrayList<RoomDTO> dtoS = dashboardBO.getAllRoom();
+            for (RoomDTO dto : dtoS) {
+                cmdStudent.getItems().add(dto.getRId());
+            }
+
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to load room ids").show();
+        }
+    }
+
+    private void clear(JFXTextField... field){
+        for (JFXTextField textField : field) {
+            textField.clear();
+        }
+    }
+
+    private void lordDateAndTime() {
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy - MM - dd           HH : mm : ss");
+            lblDate_Time.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
     }
 
     @FXML
-    public void saveReservationOnAction(ActionEvent actionEvent) {
+    private void saveReservationOnAction(ActionEvent actionEvent){
+        String id = txtRes_id.getText();
+        String studentId = cmdStudent.getValue();
+        String roomId = cmdRoom_type.getValue();
 
+        boolean reserve = saveReservation(new ReservationDTO(id, LocalDate.now(), studentId, roomId, txtStatus.getText()));
+        if (reserve) {
+            new Alert(Alert.AlertType.INFORMATION, "Reservation has been saved successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Reservation has not been saved successfully").show();
+        }
+    }
+
+    private boolean saveReservation(ReservationDTO dto) {
+        try {
+            return dashboardBO.reserveStudent(dto);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        return false;
     }
 
     @FXML
-    public void cancelReservationOnAction(ActionEvent actionEvent) {
-
+    private void cancelReservationOnAction(ActionEvent actionEvent) {
+        cmdStudent.getSelectionModel().clearSelection();
+        cmdRoom_type.getSelectionModel().clearSelection();
+        lblStudent.setText("");
+        lblReservation.setText("");
+        clear(txtRes_id,txtStatus);
     }
 
     @FXML
-    public void roomOnAction(ActionEvent actionEvent) throws IOException {
-        getURL(this.getClass().getResource("/lk/ijse/Hibernate/view/room-manage-form.fxml"));
+    public void navigate(MouseEvent event) throws IOException {
+        if (event.getSource() instanceof Button) {
+            Button button = (Button) event.getSource();
+
+            Parent root = null;
+
+            switch (button.getId()) {
+                case "btnAddNew":
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/student-add-new-form.fxml"));
+                    break;
+                case "btnRoom":
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/room-manage-form.fxml"));
+                    break;
+                case "btnStudent":
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/student-manage-form.fxml"));
+                    break;
+                case "btnReserve":
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/reserve-details-form.fxml"));
+                    break;
+            }
+
+            if (root != null) {
+                Scene subScene = new Scene(root);
+                Stage primaryStage = (Stage) this.root.getScene().getWindow();
+                primaryStage.setScene(subScene);
+                primaryStage.centerOnScreen();
+
+                TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+                tt.setFromX(-subScene.getWidth());
+                tt.setToX(0);
+                tt.play();
+
+            }
+        }
     }
 
     @FXML
-    public void studentOnAction(ActionEvent actionEvent) throws IOException {
-        getURL(this.getClass().getResource("/lk/ijse/Hibernate/view/student-manage-form.fxml"));
-    }
-
-    @FXML
-    public void reserveDetailsOnAction(ActionEvent actionEvent) throws IOException {
-        getURL(this.getClass().getResource("/lk/ijse/Hibernate/view/reserve-details-form.fxml"));
-    }
-
-    private void getURL(URL resource) throws IOException {
-        Stage primaryStage = (Stage) (this.root.getScene().getWindow());
-        primaryStage.setScene(new Scene(FXMLLoader.load(resource)));
-        primaryStage.centerOnScreen();
-        Platform.runLater(() -> primaryStage.sizeToScene());
-    }
-
-    @FXML
-    public void playMouseEnterAnimation(MouseEvent event) {
+    private void playMouseEnterAnimation(MouseEvent event) {
         if (event.getSource() instanceof Button) {
             Button button = (Button) event.getSource();
 
@@ -133,7 +270,7 @@ public class DashboardFormController {
     }
 
     @FXML
-    public void playMouseExitAnimation(MouseEvent event) {
+    private void playMouseExitAnimation(MouseEvent event) {
         if (event.getSource() instanceof Button){
             Button button = (Button) event.getSource();
             ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), button);

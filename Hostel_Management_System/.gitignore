@@ -7,6 +7,5 @@ target/
 
 # Intellij files #
 **/*.iml
-**/.idea
 **/.gradle
 /out

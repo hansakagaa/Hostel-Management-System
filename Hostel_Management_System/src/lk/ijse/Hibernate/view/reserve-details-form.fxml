@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" fx:id="root" prefHeight="450.0" prefWidth="710.0" stylesheets="@assert/styles/reserve-details-form.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Hibernate.controller.ReserveDetailsFormController">
+<AnchorPane id="root" fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@assert/styles/reserve-details-form.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Hibernate.controller.ReserveDetailsFormController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="710.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
             <fill>
                 <RadialGradient centerY="0.2644230769230769" focusAngle="138.01" radius="0.7261904761904762">
                     <stops>
@@ -35,21 +35,21 @@
                 <Font name="Ubuntu" size="27.0" />
             </font>
         </Label>
-        <TableView fx:id="tblReserve" layoutX="15.0" layoutY="110.0" prefHeight="200.0" prefWidth="680.0">
+        <TableView fx:id="tblReserve" layoutX="50.0" layoutY="110.0" prefHeight="200.0" prefWidth="700.0">
             <columns>
                 <TableColumn prefWidth="120.0" text="Reserve Id" />
                 <TableColumn prefWidth="110.0" text="Date" />
                 <TableColumn prefWidth="120.0" text="Student Id" />
-                <TableColumn prefWidth="120.0" text="Room Type Id" />
-                <TableColumn prefWidth="210.0" text="Status" />
+                <TableColumn prefWidth="130.0" text="Room Type Id" />
+                <TableColumn prefWidth="220.0" text="Status" />
             </columns>
         </TableView>
-        <JFXTextField id="txt" fx:id="txtReserveId" labelFloat="true" layoutX="15.0" layoutY="325.0" promptText="Reserve Id" />
-        <JFXTextField id="txt" fx:id="txtDate" labelFloat="true" layoutX="193.0" layoutY="325.0" promptText="Date" />
-        <JFXTextField id="txt" fx:id="txtStudentId" labelFloat="true" layoutX="372.0" layoutY="325.0" promptText="Student Id" />
-        <JFXTextField id="txt" fx:id="txtRoomTypeId" labelFloat="true" layoutX="550.0" layoutY="325.0" promptText="Room Type Id" />
-        <JFXTextField id="txt" fx:id="txtStatus" labelFloat="true" layoutX="15.0" layoutY="375.0" prefWidth="325.0" promptText="Status" />
-        <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="365.0" layoutY="390.0" onAction="#reserveDeleteOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="28.0" text="Delete Student" />
-        <JFXButton id="btnSaveOrUpdate" fx:id="btnSaveOrUpdate" layoutX="555.0" layoutY="390.0" onAction="#reserveSaveOrUpdateOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="28.0" text="Update Student" />
+        <JFXTextField id="txt" fx:id="txtReserveId" labelFloat="true" layoutX="60.0" layoutY="325.0" promptText="Reserve Id" />
+        <JFXTextField id="txt" fx:id="txtDate" labelFloat="true" layoutX="238.0" layoutY="325.0" promptText="Date" />
+        <JFXTextField id="txt" fx:id="txtStudentId" labelFloat="true" layoutX="417.0" layoutY="325.0" promptText="Student Id" />
+        <JFXTextField id="txt" fx:id="txtRoomTypeId" labelFloat="true" layoutX="595.0" layoutY="325.0" promptText="Room Type Id" />
+        <JFXTextField id="txt" fx:id="txtStatus" labelFloat="true" layoutX="238.0" layoutY="380.0" prefWidth="325.0" promptText="Status" />
+        <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="100.0" layoutY="435.0" onAction="#reserveDeleteOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="28.0" text="Delete Student" />
+        <JFXButton id="btnSaveOrUpdate" fx:id="btnSaveOrUpdate" layoutX="570.0" layoutY="435.0" onAction="#reserveSaveOrUpdateOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="28.0" text="Update Student" />
     </children>
 </AnchorPane>

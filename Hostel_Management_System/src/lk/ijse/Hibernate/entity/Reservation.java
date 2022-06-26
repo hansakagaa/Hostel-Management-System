@@ -7,7 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
     @author : Hasii-boy
@@ -20,7 +20,7 @@ import java.util.Date;
 public class Reservation implements SuperEntity{
     @Id
     private String resId;
-    private Date date;
+    private LocalDate date;
     private String sId;
     private String rId;
     private String status;

@@ -1,7 +1,6 @@
 package lk.ijse.Hibernate.controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -39,9 +38,7 @@ public class StudentManageFormController {
     @FXML
     public JFXTextField txtBoDate;
     @FXML
-    public JFXCheckBox chkMale;
-    @FXML
-    public JFXCheckBox chkFemale;
+    private JFXTextField txtGender;
     @FXML
     public TableView<StudentTM> tblStudent;
     @FXML

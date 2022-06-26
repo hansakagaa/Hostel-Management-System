@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="pane" fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@assert/styles/dashboard-form.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Hibernate.controller.DashboardFormController">
+<AnchorPane id="root" fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@assert/styles/dashboard-form.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Hibernate.controller.DashboardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="170.0" stroke="WHITE" strokeType="OUTSIDE" width="800.0">
          <fill>
@@ -27,7 +26,7 @@
       <Separator layoutX="45.0" layoutY="60.0" prefWidth="100.0" />
       <ComboBox id="cmb" fx:id="cmdStudent" layoutX="40.0" layoutY="75.0" prefWidth="150.0" promptText="Student" />
       <Label id="std" fx:id="lblStudent" layoutX="40.0" layoutY="120.0" />
-      <Button id="btnAddNew" layoutX="220.0" layoutY="75.0" mnemonicParsing="false" onAction="#addNewStudentOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="+ add_new" />
+      <JFXButton id="btnAddNew" layoutX="645.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="+ add_new" />
       <Label id="lbl" layoutX="50.0" layoutY="190.0" text="Reservation" />
       <Separator layoutX="45.0" layoutY="215.0" prefWidth="136.0" />
       <Separator layoutX="20.0" layoutY="170.0" prefWidth="500.0" />
@@ -39,9 +38,9 @@
       <JFXButton id="btnReservation" fx:id="btnReservation" buttonType="RAISED" layoutX="500.0" layoutY="430.0" onAction="#saveReservationOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="30.0" prefWidth="200.0" text="RESERVATION" />
       <JFXButton id="btnCancel" buttonType="RAISED" layoutX="65.0" layoutY="430.0" onAction="#cancelReservationOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="30.0" prefWidth="90.0" text="Cancel" />
       <Label id="std" fx:id="lbl01" alignment="CENTER" layoutX="595.0" layoutY="25.0" prefHeight="17.0" prefWidth="200.0" />
-      <JFXButton id="btnRoom" fx:id="btnRoom" buttonType="RAISED" layoutX="645.0" layoutY="75.0" onAction="#roomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="Room" />
-      <JFXButton id="btnStudent" fx:id="btnStudent" buttonType="RAISED" layoutX="645.0" layoutY="125.0" onAction="#studentOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="Student" />
-      <JFXButton id="btnReserve" fx:id="btnReserve" buttonType="RAISED" layoutX="645.0" layoutY="175.0" onAction="#reserveDetailsOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="Reserve" />
+      <JFXButton id="btnRoom" buttonType="RAISED" layoutX="645.0" layoutY="125.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="Room" />
+      <JFXButton id="btnStudent" buttonType="RAISED" layoutX="645.0" layoutY="175.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="Student" />
+      <JFXButton id="btnReserve" buttonType="RAISED" layoutX="645.0" layoutY="225.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefWidth="100.0" text="Reserve" />
       <Label id="std" fx:id="lbl02" alignment="CENTER" layoutX="215.0" layoutY="415.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

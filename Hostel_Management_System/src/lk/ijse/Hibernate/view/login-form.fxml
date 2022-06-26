@@ -17,7 +17,7 @@
             <Image url="@assert/image/room.jpg" />
          </image>
       </ImageView>
-      <AnchorPane id="pane" layoutX="356.0" layoutY="45.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="225.0" prefWidth="295.0">
+      <AnchorPane id="root" layoutX="356.0" layoutY="45.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="225.0" prefWidth="295.0">
          <children>
             <JFXTextField id="txt" fx:id="txtUser" alignment="CENTER" focusColor="#0022ff" labelFloat="true" layoutX="46.0" layoutY="111.0" promptText="User Name" unFocusColor="WHITE" />
             <JFXPasswordField id="txt" fx:id="txtPassword" focusColor="#0022ff" labelFloat="true" layoutX="46.0" layoutY="167.0" onAction="#loginOnAction" prefHeight="28.0" prefWidth="147.0" promptText="Password" unFocusColor="WHITE">

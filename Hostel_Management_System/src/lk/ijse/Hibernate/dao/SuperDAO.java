@@ -6,6 +6,6 @@ import lk.ijse.Hibernate.entity.SuperEntity;
 /**
      @author : Hasii-boy
 **/
-public interface SuperDAO<Entity extends SuperEntity, ID> {
+public interface SuperDAO <Entity extends SuperEntity, ID>{
 
 }

@@ -29,7 +29,7 @@
     -fx-stroke: white;
 }
 
-#pane{
+#root{
     -fx-border-color: #eeeeee;
     -fx-border-radius: 50;
     -fx-border-style: solid;

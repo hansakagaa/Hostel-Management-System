@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" fx:id="root" prefHeight="445.0" prefWidth="565.0" stylesheets="@assert/styles/room-manage-form.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Hibernate.controller.RoomManageFormController">
+<AnchorPane id="root" fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@assert/styles/room-manage-form.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Hibernate.controller.RoomManageFormController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="565.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
             <fill>
                 <RadialGradient centerY="0.2644230769230769" focusAngle="138.01" radius="0.7261904761904762">
                     <stops>
@@ -36,26 +36,26 @@
                 <Font name="Ubuntu" size="27.0" />
             </font>
         </Label>
-        <JFXTextField id="txt" fx:id="txtRoomTypeId" focusColor="#0652dd" labelFloat="true" layoutX="20.0" layoutY="330.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type Id" unFocusColor="BLACK" />
-        <JFXTextField id="txt" fx:id="txtKeyMoney" focusColor="#0652dd" labelFloat="true" layoutX="400.0" layoutY="330.0" prefHeight="26.0" prefWidth="150.0" promptText="Key Money (LKR)" unFocusColor="BLACK" />
-        <JFXTextField id="txt" fx:id="txtRoomQty" focusColor="#0652dd" labelFloat="true" layoutX="210.0" layoutY="380.0" prefHeight="26.0" prefWidth="150.0" promptText="Room QTY" unFocusColor="BLACK" />
-        <JFXButton id="btnSaveOrUpdate" fx:id="btnSaveOrUpdate" buttonType="RAISED" layoutX="426.0" layoutY="395.0" onAction="#roomSaveOrUpdateRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Save Room">
+        <JFXTextField id="txt" fx:id="txtRoomTypeId" focusColor="#0652dd" labelFloat="true" layoutX="50.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type Id" unFocusColor="BLACK" />
+        <JFXTextField id="txt" fx:id="txtKeyMoney" focusColor="#0652dd" labelFloat="true" layoutX="420.0" layoutY="350.0" prefHeight="26.0" prefWidth="150.0" promptText="Key Money (LKR)" unFocusColor="BLACK" />
+        <JFXTextField id="txt" fx:id="txtRoomQty" focusColor="#0652dd" labelFloat="true" layoutX="600.0" layoutY="350.0" prefHeight="26.0" prefWidth="150.0" promptText="Room QTY" unFocusColor="BLACK" />
+        <JFXButton id="btnSaveOrUpdate" fx:id="btnSaveOrUpdate" buttonType="RAISED" layoutX="575.0" layoutY="420.0" onAction="#roomSaveOrUpdateRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Save Room">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </JFXButton>
-      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="38.0" layoutY="395.0" onAction="#roomDeleteRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Delete Room" AnchorPane.rightAnchor="413.0">
+      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="125.0" layoutY="420.0" onAction="#roomDeleteRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Delete Room" AnchorPane.rightAnchor="561.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="cmbRoomType" labelFloat="true" layoutX="210.0" layoutY="330.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type" />
-      <TableView fx:id="tblRoom" layoutX="15.0" layoutY="110.0" prefHeight="200.0" prefWidth="530.0">
+      <JFXComboBox fx:id="cmbRoomType" labelFloat="true" layoutX="230.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type" />
+      <TableView fx:id="tblRoom" layoutX="50.0" layoutY="110.0" prefHeight="200.0" prefWidth="700.0">
         <columns>
-          <TableColumn prefWidth="120.0" text="Room Type Id" />
-          <TableColumn prefWidth="150.0" text="Type" />
-          <TableColumn prefWidth="140.0" text="Key Money" />
-          <TableColumn prefWidth="120.0" text="Room Qty" />
+          <TableColumn prefWidth="175.0" text="Room Type Id" />
+          <TableColumn prefWidth="175.0" text="Type" />
+          <TableColumn prefWidth="175.0" text="Key Money" />
+          <TableColumn prefWidth="175.0" text="Room Qty" />
         </columns>
       </TableView>
     </children>
