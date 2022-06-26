@@ -28,4 +28,14 @@ public class User_passwordDAOImpl implements User_passwordDAO {
     public boolean save(User_password dto) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean update(User_password dto) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String s) throws Exception {
+        return false;
+    }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
     @author : Hasii-boy
@@ -20,6 +20,6 @@ public class StudentTM {
     private String name;
     private String address;
     private String contact;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
 }

@@ -30,4 +30,14 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean save(Student dto) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean update(Student dto) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String s) throws Exception {
+        return false;
+    }
 }

@@ -15,4 +15,8 @@ public interface CrudDAO<DAO,ID> extends SuperDAO{
 
     boolean save(DAO dto) throws Exception;
 
+    boolean update(DAO dto) throws Exception;
+
+    boolean delete(ID id) throws Exception;
+
 }

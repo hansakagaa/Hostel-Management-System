@@ -28,4 +28,14 @@ public class RoomDAOImpl implements RoomDAO {
     public boolean save(Room dto) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean update(Room dto) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String s) throws Exception {
+        return false;
+    }
 }

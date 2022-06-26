@@ -28,4 +28,14 @@ public class ReservationDAOImpl implements ReservationDAO {
     public boolean save(Reservation dto) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean update(Reservation dto) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String s) throws Exception {
+        return false;
+    }
 }
