@@ -7,7 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
      @author : Hasii-boy
@@ -23,7 +23,7 @@ public class Student implements SuperEntity {
     private String name;
     private String address;
     private String contact;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
 
 }

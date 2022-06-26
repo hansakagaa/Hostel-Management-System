@@ -35,7 +35,7 @@ import java.util.ArrayList;
  * @author : Hasii-boy
  **/
 public class DashboardFormController {
-    private final DashboardBO dashboardBO = (DashboardBO) BOFactory.getInstance().getBO(BOType.DASHBOARD);
+    private final DashboardBO dashboardBO = BOFactory.getInstance().getBO(BOType.DASHBOARD);
     @FXML
     private AnchorPane root;
     @FXML
@@ -112,8 +112,8 @@ public class DashboardFormController {
             }
         });
 
-        loadAllStudentId();
-        loadAllRoomType();
+//        loadAllStudentId();
+//        loadAllRoomType();
         lordDateAndTime();
     }
 
