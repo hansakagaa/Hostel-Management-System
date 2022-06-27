@@ -85,10 +85,10 @@ public class StudentManageFormController {
         });
 
         txtGender.setOnAction(event -> btnSaveOrUpdate.fire());
-        loadAllCustomers();
+        loadAllStudent();
     }
 
-    private void loadAllCustomers() {
+    private void loadAllStudent() {
         tblStudent.getItems().clear();
         try {
 

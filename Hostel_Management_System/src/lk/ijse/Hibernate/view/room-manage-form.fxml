@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -49,7 +48,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="cmbRoomType" labelFloat="true" layoutX="230.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type" />
       <TableView fx:id="tblRoom" layoutX="50.0" layoutY="110.0" prefHeight="200.0" prefWidth="700.0">
         <columns>
           <TableColumn prefWidth="175.0" text="Room Type Id" />
@@ -58,5 +56,6 @@
           <TableColumn prefWidth="175.0" text="Room Qty" />
         </columns>
       </TableView>
+      <JFXTextField id="txt" fx:id="txtRoomType" focusColor="#0652dd" labelFloat="true" layoutX="230.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type" unFocusColor="BLACK" />
     </children>
 </AnchorPane>
