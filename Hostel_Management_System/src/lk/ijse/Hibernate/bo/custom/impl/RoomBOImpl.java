@@ -20,6 +20,11 @@ public class RoomBOImpl implements RoomBO {
     }
 
     @Override
+    public boolean exitsRoomType(String type) throws Exception {
+        return roomDAO.exitsType(type);
+    }
+
+    @Override
     public boolean saveRoom(RoomDTO dto) throws Exception {
         return roomDAO.save(new Room(dto.getRId(),dto.getType(),dto.getKeyMoney(),dto.getRoomQty()));
     }

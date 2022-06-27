@@ -128,12 +128,28 @@ public class RoomManageFormController {
     }
 
     @FXML
+    private void addNewRoomOnAction(ActionEvent actionEvent){
+        setEditable(true, txtRoomTypeId);
+        setDisable(false, txtRoomTypeId,txtRoomType,txtKeyMoney,txtRoomQty);
+        clear(txtRoomTypeId,txtRoomType,txtKeyMoney,txtRoomQty);
+        txtRoomTypeId.requestFocus();
+        btnSaveOrUpdate.setDisable(false);
+        btnSaveOrUpdate.setText("Save Room");
+        tblRoom.getSelectionModel().clearSelection();
+    }
+
+    @FXML
     private void roomSaveOrUpdateRoomOnAction(ActionEvent actionEvent) {
         String id = txtRoomTypeId.getText();
         String type = txtRoomType.getText();
         String keyMoney = txtKeyMoney.getText();
         String qty = txtRoomQty.getText();
 
+        if (!id.matches("^(RM-)[0-9]{4}$")) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Room Type Id").show();
+            txtKeyMoney.requestFocus();txtKeyMoney.selectAll();
+            return;
+        }else
         if (!keyMoney.matches("^([0-9]+)$|([0-9]+[.][0-9]{2})$")) {
             new Alert(Alert.AlertType.ERROR, "Invalid Key Money").show();
             txtKeyMoney.requestFocus();txtKeyMoney.selectAll();
@@ -144,6 +160,16 @@ public class RoomManageFormController {
             txtRoomQty.requestFocus();txtRoomQty.selectAll();
             return;
         }
+        try {
+            if (roomBO.exitsRoomType(type)) {
+                new Alert(Alert.AlertType.ERROR, "Invalid Room Type").show();
+                txtRoomType.requestFocus();txtRoomType.selectAll();
+                return;
+            }
+        }catch (Exception e){
+            new Alert(Alert.AlertType.ERROR, "" + e.getMessage()).show();
+        }
+
 
         if (btnSaveOrUpdate.getText().equalsIgnoreCase("Save Room")) {
             try {

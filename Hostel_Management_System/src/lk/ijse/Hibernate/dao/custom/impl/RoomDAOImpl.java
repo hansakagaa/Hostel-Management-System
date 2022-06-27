@@ -38,4 +38,9 @@ public class RoomDAOImpl implements RoomDAO {
     public boolean delete(String s) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean exitsType(String type) throws Exception {
+        return false;
+    }
 }

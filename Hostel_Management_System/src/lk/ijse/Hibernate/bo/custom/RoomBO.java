@@ -12,6 +12,8 @@ public interface RoomBO extends SuperBO {
 
     boolean exitsRoom(String id) throws Exception;
 
+    boolean exitsRoomType(String type) throws Exception;
+
     boolean saveRoom(RoomDTO dto)throws Exception;
 
     boolean updateRoom(RoomDTO dto)throws Exception;

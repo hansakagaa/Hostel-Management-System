@@ -43,7 +43,7 @@
                 <Font name="System Bold" size="13.0" />
             </font>
         </JFXButton>
-      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="125.0" layoutY="420.0" onAction="#roomDeleteRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Delete Room" AnchorPane.rightAnchor="561.0">
+      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="125.0" layoutY="420.0" onAction="#roomDeleteRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Delete Room">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -57,5 +57,6 @@
         </columns>
       </TableView>
       <JFXTextField id="txt" fx:id="txtRoomType" focusColor="#0652dd" labelFloat="true" layoutX="230.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" promptText="Room Type" unFocusColor="BLACK" />
+      <JFXButton id="addNew" buttonType="RAISED" layoutX="643.0" layoutY="41.0" onAction="#addNewRoomOnAction" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" text="Add New Room" />
     </children>
 </AnchorPane>
