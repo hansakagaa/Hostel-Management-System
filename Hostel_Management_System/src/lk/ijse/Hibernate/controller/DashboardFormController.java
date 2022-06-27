@@ -165,22 +165,17 @@ public class DashboardFormController {
         String id = txtRes_id.getText();
         String studentId = cmdStudent.getValue();
         String roomId = cmdRoom_type.getValue();
-
-        boolean reserve = saveReservation(new ReservationDTO(id, LocalDate.now(), studentId, roomId, txtStatus.getText()));
-        if (reserve) {
-            new Alert(Alert.AlertType.INFORMATION, "Reservation has been saved successfully").show();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Reservation has not been saved successfully").show();
-        }
-    }
-
-    private boolean saveReservation(ReservationDTO dto) {
         try {
-            return dashboardBO.reserveStudent(dto);
+            boolean reserve = dashboardBO.reserveStudent(new ReservationDTO(id, LocalDate.now(), studentId, roomId, txtStatus.getText()));
+            if (reserve) {
+                new Alert(Alert.AlertType.INFORMATION, "Reservation has been saved successfully").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Reservation has not been saved successfully").show();
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return false;
+
     }
 
     @FXML

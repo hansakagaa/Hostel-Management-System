@@ -61,7 +61,7 @@ public class RoomManageFormController {
         tblRoom.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, room) -> {
             btnDelete.setDisable(room == null);
             btnSaveOrUpdate.setText(room != null ? "Update Room" : "Save Room");
-            if(room != null)  setDisable(false,txtRoomType); else setEditable(true,txtRoomType);
+            if(room != null)  setEditable(false,txtRoomType); else setEditable(true,txtRoomType);
             btnSaveOrUpdate.setDisable(room == null);
 
             if (room != null) {
@@ -75,7 +75,7 @@ public class RoomManageFormController {
         });
 
         txtRoomQty.setOnAction(event -> btnSaveOrUpdate.fire());
-        loadAllRoom();
+//        loadAllRoom();
     }
 
     private void loadAllRoom() {
@@ -88,8 +88,6 @@ public class RoomManageFormController {
                 tblRoom.getItems().add(new RoomTM(dto.getRId(), dto.getType(), dto.getKeyMoney(), dto.getRoomQty()));
             }
 
-        } catch (ClassNotFoundException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, ""+e.getMessage()).show();
         }
@@ -103,7 +101,7 @@ public class RoomManageFormController {
 
     private void setEditable(boolean b, JFXTextField... field){
         for (JFXTextField textField : field) {
-            textField.setDisable(b);
+            textField.setEditable(b);
         }
     }
 
@@ -153,11 +151,14 @@ public class RoomManageFormController {
                     new Alert(Alert.AlertType.ERROR, id + " already exists").show();
                 }
 
-                roomBO.saveRoom(new RoomDTO(id, type, keyMoney, Integer.parseInt(qty)));
+                boolean room = roomBO.saveRoom(new RoomDTO(id, type, keyMoney, Integer.parseInt(qty)));
+                if (room) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Room has been saved successfully").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Room has not been Saved successfully").show();
+                }
 
                 tblRoom.getItems().add(new RoomTM(id, type, keyMoney, Integer.parseInt(qty)));
-            } catch (ClassNotFoundException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "" + e.getMessage()).show();
             }
@@ -166,9 +167,13 @@ public class RoomManageFormController {
                 if (!roomBO.exitsRoom(id)) {
                     new Alert(Alert.AlertType.ERROR, "There is no such room associated with the id " + id).show();
                 }
-                roomBO.updateRoom(new RoomDTO(id, type, keyMoney, Integer.parseInt(qty)));
-            } catch (ClassNotFoundException e) {
-                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+                boolean room = roomBO.updateRoom(new RoomDTO(id, type, keyMoney, Integer.parseInt(qty)));
+                if (room) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Room has been updated successfully").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Room has not been updated successfully").show();
+                }
+
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, ""+e.getMessage()).show();
             }
@@ -199,8 +204,6 @@ public class RoomManageFormController {
             tblRoom.getSelectionModel().clearSelection();
             initUI();
 
-        } catch (ClassNotFoundException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,""+e.getMessage()).show();
         }

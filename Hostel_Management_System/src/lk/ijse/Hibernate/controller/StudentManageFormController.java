@@ -85,7 +85,7 @@ public class StudentManageFormController {
         });
 
         txtGender.setOnAction(event -> btnSaveOrUpdate.fire());
-        loadAllStudent();
+//        loadAllStudent();
     }
 
     private void loadAllStudent() {
@@ -97,9 +97,6 @@ public class StudentManageFormController {
             for (StudentDTO dto : allStudents) {
                 tblStudent.getItems().add(new StudentTM(dto.getSId(), dto.getName(), dto.getAddress(), dto.getContact(), dto.getDateOfBirth(), dto.getGender()));
             }
-
-        } catch (ClassNotFoundException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, ""+e.getMessage()).show();
         }
@@ -171,11 +168,14 @@ public class StudentManageFormController {
                     new Alert(Alert.AlertType.ERROR, id + " already exists").show();
                 }
 
-                studentBO.saveStudent(new StudentDTO(id, name, address, contact, bod, gender));
+                boolean student = studentBO.saveStudent(new StudentDTO(id, name, address, contact, bod, gender));
+                if (student) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Student has been saved successfully").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Student has not been Saved successfully").show();
+                }
 
                 tblStudent.getItems().add(new StudentTM(id, name, address, contact, bod, gender));
-            } catch (ClassNotFoundException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "" + e.getMessage()).show();
             }
@@ -186,9 +186,13 @@ public class StudentManageFormController {
                 if (!studentBO.exitsStudent(id)) {
                     new Alert(Alert.AlertType.ERROR, "There is no such student associated with the id " + id).show();
                 }
-                studentBO.updateStudent(new StudentDTO(id, name, address, contact, bod, gender));
-            } catch (ClassNotFoundException e) {
-                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+                boolean student = studentBO.updateStudent(new StudentDTO(id, name, address, contact, bod, gender));
+                if (student) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Student has been updated successfully").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Student has not been updated successfully").show();
+                }
+
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, ""+e.getMessage()).show();
             }
@@ -221,8 +225,6 @@ public class StudentManageFormController {
             tblStudent.getSelectionModel().clearSelection();
             initUI();
 
-        } catch (ClassNotFoundException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,""+e.getMessage()).show();
         }

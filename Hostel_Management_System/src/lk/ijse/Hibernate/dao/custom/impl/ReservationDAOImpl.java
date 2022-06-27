@@ -38,4 +38,9 @@ public class ReservationDAOImpl implements ReservationDAO {
     public boolean delete(String s) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean exitsRoomId(String id) throws Exception {
+        return false;
+    }
 }

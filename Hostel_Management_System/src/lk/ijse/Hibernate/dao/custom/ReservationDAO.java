@@ -7,4 +7,6 @@ import lk.ijse.Hibernate.entity.Reservation;
     @author : Hasii-boy
 **/
 public interface ReservationDAO extends CrudDAO<Reservation, String> {
+
+    boolean exitsRoomId(String id)throws Exception;
 }
