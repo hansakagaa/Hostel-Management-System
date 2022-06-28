@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
@@ -19,9 +20,13 @@ import java.time.LocalDate;
 @Entity
 public class Reservation implements SuperEntity{
     @Id
+    @Column(name = "res_id")
     private String resId;
+    @Column(columnDefinition = "DATE")
     private LocalDate date;
+    @Column(name = "student_id")
     private String sId;
+    @Column(name = "room_type-id")
     private String rId;
     private String status;
 
