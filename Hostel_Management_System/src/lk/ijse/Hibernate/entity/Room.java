@@ -26,4 +26,7 @@ public class Room implements SuperEntity{
     @Column(name = "qty")
     private int roomQty;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_type_id")
+    private List<Reservation> reservations;
 }
