@@ -5,9 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
     @author : Hasii-boy
@@ -19,7 +18,7 @@ import javax.persistence.Id;
 @Entity
 public class Room implements SuperEntity{
     @Id
-    @Column(name = "room_type-id")
+    @Column(name = "room_type_id")
     private String rId;
     private String type;
     @Column(name = "key_money")

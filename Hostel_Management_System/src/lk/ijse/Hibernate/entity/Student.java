@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
      @author : Hasii-boy
@@ -31,5 +30,8 @@ public class Student implements SuperEntity {
     private LocalDate dateOfBirth;
     private String gender;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
+    private List<Reservation> reservations;
 }
 
