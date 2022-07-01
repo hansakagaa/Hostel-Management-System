@@ -5,6 +5,7 @@ import lk.ijse.Hibernate.entity.User_password;
 import lk.ijse.Hibernate.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,15 @@ import java.util.List;
 **/
 public class User_passwordDAOImpl implements User_passwordDAO {
     @Override
-    public boolean exits(String s) throws Exception {
+    public boolean exits(String user) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
+        Query query = session.createQuery("SELECT userName FROM User_password WHERE userName=:id");
+        String uId = String.valueOf(query.setParameter("id", user).uniqueResult());
+        if (uId != null) {
+            return true;
+        }
 
         transaction.commit();
         session.close();
