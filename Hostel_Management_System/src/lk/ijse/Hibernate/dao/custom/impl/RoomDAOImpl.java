@@ -57,7 +57,7 @@ public class RoomDAOImpl implements RoomDAO {
 
         transaction.commit();
         session.close();
-        return false;
+        return true;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class RoomDAOImpl implements RoomDAO {
 
         transaction.commit();
         session.close();
-        return false;
+        return true;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class RoomDAOImpl implements RoomDAO {
 
         transaction.commit();
         session.close();
-        return false;
+        return true;
     }
 
     @Override
