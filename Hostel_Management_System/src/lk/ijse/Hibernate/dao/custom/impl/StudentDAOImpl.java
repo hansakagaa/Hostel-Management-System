@@ -5,6 +5,7 @@ import lk.ijse.Hibernate.entity.Student;
 import lk.ijse.Hibernate.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,11 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-
+        Query query = session.createQuery("SELECT id FROM Student WHERE id=:id");
+        String sId = String.valueOf(query.setParameter("id", id).uniqueResult());
+        if (sId != null) {
+            return true;
+        }
 
         transaction.commit();
         session.close();
