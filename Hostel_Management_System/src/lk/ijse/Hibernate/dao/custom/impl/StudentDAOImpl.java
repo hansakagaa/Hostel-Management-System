@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
     @author : Hasii-boy
@@ -15,18 +16,39 @@ import java.util.ArrayList;
 public class StudentDAOImpl implements StudentDAO {
 
     @Override
-    public boolean exits(String s) throws Exception {
+    public boolean exits(String id) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+
+
+        transaction.commit();
+        session.close();
         return false;
     }
 
     @Override
-    public Student find(String s) throws Exception {
-        return null;
+    public Student find(String id) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Student student = session.find(Student.class, id);
+
+        transaction.commit();
+        session.close();
+        return student;
     }
 
     @Override
     public ArrayList<Student> getAll() throws Exception {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Student> student = session.createQuery("FROM Student").list();
+
+        transaction.commit();
+        session.close();
+        return (ArrayList<Student>) student;
     }
 
     @Override

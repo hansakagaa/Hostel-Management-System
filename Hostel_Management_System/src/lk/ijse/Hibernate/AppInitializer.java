@@ -15,14 +15,6 @@ public class AppInitializer extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
-//        Session session = FactoryConfiguration.getInstance().getSession();
-//        Transaction transaction = session.beginTransaction();
-//
-////        session.save(room);
-//
-//        transaction.commit();
-//        session.close();
     }
     @Override
     public void start(Stage primaryStage) throws IOException {

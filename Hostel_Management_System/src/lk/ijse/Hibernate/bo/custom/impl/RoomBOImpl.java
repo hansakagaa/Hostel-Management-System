@@ -26,12 +26,12 @@ public class RoomBOImpl implements RoomBO {
 
     @Override
     public boolean saveRoom(RoomDTO dto) throws Exception {
-        return roomDAO.save(new Room(dto.getRId(),dto.getType(),dto.getKeyMoney(),dto.getRoomQty()));
+        return roomDAO.save(new Room(dto.getRId(),dto.getType(),dto.getKeyMoney(),dto.getRoomQty(), null));
     }
 
     @Override
     public boolean updateRoom(RoomDTO dto) throws Exception {
-        return roomDAO.update(new Room(dto.getRId(),dto.getType(),dto.getKeyMoney(),dto.getRoomQty()));
+        return roomDAO.update(new Room(dto.getRId(),dto.getType(),dto.getKeyMoney(),dto.getRoomQty(), null));
     }
 
     @Override
