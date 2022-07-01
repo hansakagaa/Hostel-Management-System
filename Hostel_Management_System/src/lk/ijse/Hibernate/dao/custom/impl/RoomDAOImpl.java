@@ -5,6 +5,7 @@ import lk.ijse.Hibernate.entity.Room;
 import lk.ijse.Hibernate.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,15 @@ import java.util.List;
 **/
 public class RoomDAOImpl implements RoomDAO {
     @Override
-    public boolean exits(String s) throws Exception {
+    public boolean exits(String id) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
+        Query query = session.createQuery("SELECT id FROM Room WHERE id=:id");
+        String rId = String.valueOf(query.setParameter("id", id).uniqueResult());
+        if (rId != null) {
+            return true;
+        }
 
         transaction.commit();
         session.close();
@@ -90,6 +96,11 @@ public class RoomDAOImpl implements RoomDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
+        Query query = session.createQuery("SELECT type FROM Room WHERE type=:type");
+        String roomType = String.valueOf(query.setParameter("type", type).uniqueResult());
+        if (roomType != null) {
+            return true;
+        }
 
         transaction.commit();
         session.close();
