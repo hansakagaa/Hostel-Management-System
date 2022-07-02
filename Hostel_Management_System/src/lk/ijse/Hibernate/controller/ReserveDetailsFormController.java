@@ -79,7 +79,7 @@ public class ReserveDetailsFormController {
         });
 
         txtStatus.setOnAction(event -> btnSaveOrUpdate.fire());
-//        loadAllReservation();
+        loadAllReservation();
     }
 
     private void loadAllReservation() {

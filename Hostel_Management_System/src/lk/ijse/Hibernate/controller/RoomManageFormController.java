@@ -75,7 +75,7 @@ public class RoomManageFormController {
         });
 
         txtRoomQty.setOnAction(event -> btnSaveOrUpdate.fire());
-//        loadAllRoom();
+        loadAllRoom();
     }
 
     private void loadAllRoom() {

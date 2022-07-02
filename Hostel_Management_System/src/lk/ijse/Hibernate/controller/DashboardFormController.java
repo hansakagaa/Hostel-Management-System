@@ -112,8 +112,8 @@ public class DashboardFormController {
             }
         });
 
-//        loadAllStudentId();
-//        loadAllRoomType();
+        loadAllStudentId();
+        loadAllRoomType();
         lordDateAndTime();
     }
 

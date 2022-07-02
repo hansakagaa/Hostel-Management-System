@@ -85,7 +85,7 @@ public class StudentManageFormController {
         });
 
         txtGender.setOnAction(event -> btnSaveOrUpdate.fire());
-//        loadAllStudent();
+        loadAllStudent();
     }
 
     private void loadAllStudent() {

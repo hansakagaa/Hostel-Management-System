@@ -18,7 +18,8 @@ public class AppInitializer extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/login-form.fxml"));
+//        Parent root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/login-form.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/Hibernate/view/dashboard-form.fxml"));
         Scene mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("HOSTEL RESERVATION SYSTEM");
